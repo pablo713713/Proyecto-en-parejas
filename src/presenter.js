@@ -1,14 +1,16 @@
-import showTam from './datos.js';
+import getInputData from './datos.js';
 
 document.getElementById('mostrar').addEventListener('click', () => {
-    const dim_ejex = document.getElementById('ejex').value;
-    const dim_ejey = document.getElementById('ejey').value;
-    const Items = showTam(dim_ejex);  // Uso correcto de showTam
-    const Precio = showTam(dim_ejey);
+    const ejex = document.getElementById('ejex').value;
+    const ejey = document.getElementById('ejey').value;
+    const posx = document.getElementById('posx').value;
+    const posy = document.getElementById('posy').value;
+    const direccion = document.getElementById('direccion').value;
+    const result = getInputData(ejex, ejey, posx, posy, direccion);
     
-    // Actualización de los spans, no de los inputs
-    document.getElementById('ejex-output').textContent = Items;
-    document.getElementById('ejey-output').textContent = Precio;
+    document.getElementById('ejex-output').textContent = result[0];
+    document.getElementById('ejey-output').textContent = result[1];
+    document.getElementById('posx-output').textContent = result[2];
+    document.getElementById('posy-output').textContent = result[3];
+    document.getElementById('direccion-output').textContent = result[4];
 });
-
- 

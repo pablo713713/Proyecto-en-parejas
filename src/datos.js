@@ -1,6 +1,5 @@
-function showTam(dim_ejex, dim_ejey)
-{
-    return [dim_ejex, dim_ejey];
+function getInputData(ejex, ejey, posx = null, posy= null, direccion= null) {
+    return [ejex, ejey, posx, posy, direccion];
 }
-export default showTam;
 
+export default getInputData;
