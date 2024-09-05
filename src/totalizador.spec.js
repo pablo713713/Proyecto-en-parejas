@@ -1,4 +1,4 @@
-import {getInputData, getDataIsCorrect} from "./datos.js";
+import {getInputData, getDataIsCorrect, getPosIsCorrect} from "./datos.js";
 
 describe("Mostrar", () => {
     it("Deberia mostrarse 5,5", () => {
@@ -15,5 +15,8 @@ describe("Mostrar", () => {
     });
     it("Deberia mostrar si es correcto el tamaño de tabla", () => {
         expect(getDataIsCorrect(2, 2)).toEqual(true);
+    });
+    it("Deberia mostrar si es correcto la posicion inicial", () => {
+        expect(getPosIsCorrect(2, 2 , 1, 1, "N")).toEqual(true);
     });
 });

@@ -9,4 +9,11 @@ function getDataIsCorrect(ejex, ejey) {
     return false
 }
 
-export { getDataIsCorrect , getInputData};
+function getPosIsCorrect(ejex, ejey, posx = null, posy= null,direccion= null ) {
+    if(getDataIsCorrect(posx, posy) && ejex >= posx && ejey >= posy && (direccion == "N" || direccion == "S" || direccion == "O" || direccion == "E") ){
+        return true
+    }
+    return false
+}
+
+export { getDataIsCorrect , getInputData, getPosIsCorrect};
