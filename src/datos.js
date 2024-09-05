@@ -2,4 +2,11 @@ function getInputData(ejex, ejey, posx = null, posy= null, direccion= null,movim
     return [ejex, ejey, posx, posy, direccion,movimientos];
 }
 
-export default getInputData;
+function getDataIsCorrect(ejex, ejey) {
+    if(ejex >= 0 && ejey >= 0 && Number.isInteger(ejex) && Number.isInteger(ejey)){
+        return true
+    }
+    return false
+}
+
+export { getDataIsCorrect , getInputData};
