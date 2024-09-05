@@ -22,4 +22,24 @@ function getMotionIsCorrect(movimientos=null) {
     return regex.test(movimientos);
 }
 
-export { getDataIsCorrect , getInputData, getPosIsCorrect, getMotionIsCorrect};
+function turnRight(direccion) {
+    const direcciones = ['N', 'E', 'S', 'O'];
+    let index = direcciones.indexOf(direccion);
+    
+    if (index === -1) return null;
+    index = (index + 1) % direcciones.length;
+    
+    return direcciones[index];
+}
+function turnLeft(direccion) {
+    const direcciones = ['N', 'O', 'S', 'E']; // Cambia el orden para girar a la izquierda
+    let index = direcciones.indexOf(direccion);
+
+    if (index === -1) return null;
+    index = (index + 1) % direcciones.length;
+
+    return direcciones[index];
+}
+
+export { getDataIsCorrect, getInputData, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft };
+

@@ -1,4 +1,4 @@
-import {getInputData, getDataIsCorrect, getPosIsCorrect, getMotionIsCorrect} from "./datos.js";
+import {getInputData, getDataIsCorrect, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft} from "./datos.js";
 
 describe("Mostrar", () => {
     it("Deberia mostrarse 5,5", () => {
@@ -21,5 +21,29 @@ describe("Mostrar", () => {
     });
     it("Deberia mostrar si son correctos los movimientos", () => {
         expect(getMotionIsCorrect("AIAADAAI")).toEqual(true);
+    });
+    it("Debería mostrar el cambio de dirección de N a E", () => {
+        expect(turnRight("N")).toEqual("E");
+    });
+    it("Debería mostrar el cambio de dirección de E a S", () => {
+        expect(turnRight("E")).toEqual("S");
+    });
+    it("Debería mostrar el cambio de dirección de S a O", () => {
+        expect(turnRight("S")).toEqual("O");
+    });
+    it("Debería mostrar el cambio de dirección de O a N", () => {
+        expect(turnRight("O")).toEqual("N");
+    });
+    it("Debería mostrar el cambio de dirección de N a O", () => {
+        expect(turnLeft("N")).toEqual("O");
+    });
+    it("Debería mostrar el cambio de dirección de O a S", () => {
+        expect(turnLeft("O")).toEqual("S");
+    });
+    it("Debería mostrar el cambio de dirección de S a E", () => {
+        expect(turnLeft("S")).toEqual("E");
+    });
+    it("Debería mostrar el cambio de dirección de E a N", () => {
+        expect(turnLeft("E")).toEqual("N");
     });
 });
