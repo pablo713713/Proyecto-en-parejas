@@ -40,6 +40,19 @@ function turnLeft(direccion) {
 
     return direcciones[index];
 }
+function forward(ejex, ejey, posx = null, posy= null, direccion= null,movimientos=null) {
 
-export { getDataIsCorrect, getInputData, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft };
+    if(direccion == 'N')
+    {
+        return [posx, posy+1, direccion];
+    }else if(direccion == 'S'){
+        return [posx, posy-1, direccion];
+    }else if(direccion == 'O'){
+        return [posx-1, posy, direccion];
+    }else if(direccion == 'E'){
+        return [posx+1, posy, direccion];
+    }
+}
+
+export { getDataIsCorrect, getInputData, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft , forward};
 

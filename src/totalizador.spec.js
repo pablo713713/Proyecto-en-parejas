@@ -1,4 +1,4 @@
-import {getInputData, getDataIsCorrect, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft} from "./datos.js";
+import {getInputData, getDataIsCorrect, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft, forward} from "./datos.js";
 
 describe("Mostrar", () => {
     it("Deberia mostrarse 5,5", () => {
@@ -45,5 +45,17 @@ describe("Mostrar", () => {
     });
     it("Debería mostrar el cambio de dirección de E a N", () => {
         expect(turnLeft("E")).toEqual("N");
+    });
+    it("Debería mostrar como avannza adelante, mirando al norte", () => {
+        expect(forward(5, 5, 1, 2,"N","A")).toEqual([1, 3,"N"]);
+    });
+    it("Debería mostrar como avannza adelante, mirando al sud", () => {
+        expect(forward(5, 5, 1, 2,"S","A")).toEqual([1, 1,"S"]);
+    });
+    it("Debería mostrar como avannza adelante, mirando al oeste", () => {
+        expect(forward(5, 5, 1, 2,"O","A")).toEqual([0, 2,"O"]);
+    });
+    it("Debería mostrar como avannza adelante, mirando al este", () => {
+        expect(forward(5, 5, 1, 2,"E","A")).toEqual([2, 2,"E"]);
     });
 });

@@ -1,4 +1,4 @@
-import {getInputData, getDataIsCorrect, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft} from './datos.js';
+import {getInputData, getDataIsCorrect, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft, forward} from './datos.js';
 
 document.getElementById('mostrar').addEventListener('click', () => {
     const ejex = parseFloat(document.getElementById('ejex').value);
@@ -13,6 +13,8 @@ document.getElementById('mostrar').addEventListener('click', () => {
     const resultPassPos = getPosIsCorrect(ejex, ejey, posx, posy, direccion);
     const resultPassMotion = getMotionIsCorrect(movimientos);
     
+    const posicionFinal = forward(ejex, ejey, posx, posy, direccion, movimientos);
+
     if (resultPassEje && resultPassPos && resultPassMotion) {
         const result = getInputData(ejex, ejey, posx, posy, direccion, movimientos);
         const nuevaDireccionDerecha = turnRight(direccion); 
@@ -24,6 +26,10 @@ document.getElementById('mostrar').addEventListener('click', () => {
         document.getElementById('posy-output').textContent = result[3];
         document.getElementById('direccion-output').textContent = direccion;
         document.getElementById('movimientos-output').textContent = result[5];
+
+        document.getElementById('posicion-finalx').textContent = posicionFinal[0];
+        document.getElementById('posicion-finaly').textContent = posicionFinal[1];
+        document.getElementById('posicion-finald').textContent = posicionFinal[2];
 
         console.log('Dirección al girar a la derecha:', nuevaDireccionDerecha);
         console.log('Dirección al girar a la izquierda:', nuevaDireccionIzquierda);
