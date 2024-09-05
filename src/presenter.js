@@ -1,4 +1,4 @@
-import {getInputData, getDataIsCorrect, getPosIsCorrect} from './datos.js';
+import {getInputData, getDataIsCorrect, getPosIsCorrect, getMotionIsCorrect} from './datos.js';
 
 document.getElementById('mostrar').addEventListener('click', () => {
     const ejex = parseFloat(document.getElementById('ejex').value);
@@ -9,6 +9,7 @@ document.getElementById('mostrar').addEventListener('click', () => {
     const movimientos = document.getElementById('movimientos').value; 
     const resultPassEje = getDataIsCorrect(ejex, ejey);
     const resultPassPos = getPosIsCorrect(ejex, ejey, posx, posy, direccion);
+    const resultPassMotion = getMotionIsCorrect(movimientos);
     const result = getInputData(ejex, ejey, posx, posy, direccion,movimientos);
     
     
@@ -20,4 +21,5 @@ document.getElementById('mostrar').addEventListener('click', () => {
     document.getElementById('pos-Pass').textContent = resultPassPos;
     document.getElementById('direccion-output').textContent = result[4];
     document.getElementById('movimientos-output').textContent = result[5];
+    document.getElementById('Motion-Pass').textContent = resultPassMotion;
 })

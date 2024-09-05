@@ -1,4 +1,4 @@
-import {getInputData, getDataIsCorrect, getPosIsCorrect} from "./datos.js";
+import {getInputData, getDataIsCorrect, getPosIsCorrect, getMotionIsCorrect} from "./datos.js";
 
 describe("Mostrar", () => {
     it("Deberia mostrarse 5,5", () => {
@@ -18,5 +18,8 @@ describe("Mostrar", () => {
     });
     it("Deberia mostrar si es correcto la posicion inicial", () => {
         expect(getPosIsCorrect(2, 2 , 1, 1, "N")).toEqual(true);
+    });
+    it("Deberia mostrar si son correctos los movimientos", () => {
+        expect(getMotionIsCorrect("AIAADAAI")).toEqual(true);
     });
 });

@@ -16,4 +16,10 @@ function getPosIsCorrect(ejex, ejey, posx = null, posy= null,direccion= null ) {
     return false
 }
 
-export { getDataIsCorrect , getInputData, getPosIsCorrect};
+function getMotionIsCorrect(movimientos=null) {
+
+    const regex = /^[ADI]+$/;
+    return regex.test(movimientos);
+}
+
+export { getDataIsCorrect , getInputData, getPosIsCorrect, getMotionIsCorrect};
