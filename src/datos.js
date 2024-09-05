@@ -44,15 +44,56 @@ function forward(ejex, ejey, posx = null, posy= null, direccion= null,movimiento
 
     if(direccion == 'N')
     {
+        if(posy == ejey)
+        {
+            return [posx, posy, direccion];
+        }
         return [posx, posy+1, direccion];
     }else if(direccion == 'S'){
+        if(posy == 0)
+        {
+            return [posx, posy, direccion];
+        }
         return [posx, posy-1, direccion];
     }else if(direccion == 'O'){
+        if(posx == 0)
+        {
+            return [posx, posy, direccion];
+        }
         return [posx-1, posy, direccion];
     }else if(direccion == 'E'){
+        if(posx == ejex)
+        {
+            return [posx, posy, direccion];
+        }
         return [posx+1, posy, direccion];
     }
 }
 
-export { getDataIsCorrect, getInputData, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft , forward};
+function Go(ejex, ejey, posx = null, posy= null, direccion= null,movimientos=null) {
+    
+    let posicionfinal = new Array(3);
+    for (let i = 0; i < movimientos.length; i++) {
+        if(movimientos[i] == 'A')
+        {
+            posicionfinal= forward(ejex, ejey, posx, posy, direccion, 'A')
+        }else if(movimientos[i] == 'I')
+        {
+            posicionfinal[2] = turnLeft(direccion)
+            posicionfinal[1] = posy
+            posicionfinal[0] = posx
+        }else if(movimientos[i] == 'D')
+        {
+            posicionfinal[2] = turnRight(direccion)
+            posicionfinal[1] = posy
+            posicionfinal[0] = posx
+        }
+         posx = posicionfinal[0]
+         posy = posicionfinal[1]
+         direccion = posicionfinal[2]
+    }
+    return posicionfinal
+}
+
+export { getDataIsCorrect, getInputData, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft , forward, Go};
 

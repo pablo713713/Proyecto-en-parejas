@@ -1,4 +1,4 @@
-import {getInputData, getDataIsCorrect, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft, forward} from "./datos.js";
+import {getInputData, getDataIsCorrect, getPosIsCorrect, getMotionIsCorrect, turnRight, turnLeft, forward, Go} from "./datos.js";
 
 describe("Mostrar", () => {
     it("Deberia mostrarse 5,5", () => {
@@ -57,5 +57,29 @@ describe("Mostrar", () => {
     });
     it("Debería mostrar como avannza adelante, mirando al este", () => {
         expect(forward(5, 5, 1, 2,"E","A")).toEqual([2, 2,"E"]);
+    });
+    it("Debería mostrar como avannza muchos adelantes", () => {
+        expect(Go(5, 5, 1, 2,"N","AAA")).toEqual([1, 5,"N"]);
+    });
+    it("Debería mostrar como se mueve mucho a la izquierda", () => {
+        expect(Go(5, 5, 1, 2,"N","III")).toEqual([1, 2,"E"]);
+    });
+    it("Debería mostrar como se mueve mucho a la DERECHA", () => {
+        expect(Go(5, 5, 1, 2,"N","DDD")).toEqual([1, 2,"O"]);
+    });
+    it("Debería mostrar como se mueve a toda dirrecion", () => {
+        expect(Go(5, 5, 1, 2,"N","ADDAAA")).toEqual([1,0,"S"]);
+    });
+    it("Debería limitarse en el limite de sud", () => {
+        expect(Go(5, 5, 1, 2,"N","ADDAAAAIAADD")).toEqual([3,0,"O"]);
+    });
+    it("Debería limitarse en el limite de norte", () => {
+        expect(Go(5, 5, 1, 2,"N","ADDAAAAIAADDDAAAAAA")).toEqual([3,5,"N"]);
+    });
+    it("Debería limitarse en el limite de oeste", () => {
+        expect(Go(5, 5, 1, 2,"N","ADDAAAAIAADDDAAAAAAIAAAA")).toEqual([0,5,"O"]);
+    });
+    it("Debería limitarse en el limite de este", () => {
+        expect(Go(5, 5, 1, 2,"N","ADDAAAAIAADDDAAAAAAIAAAADDAAAAAA")).toEqual([5,5,"E"]);
     });
 });
